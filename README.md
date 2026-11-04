@@ -11,7 +11,7 @@ Put the jar in `mods/` next to Tidings and restart the server. Players don't nee
 
 Requirements: a JDK 17+ (Gradle downloads Java 17 for Forge automatically).
 
-The mod compiles against Tidings without bundling it. Gradle downloads Tidings from Modrinth Maven, at the version set by `tidings_version` in `gradle.properties`.
+The mod compiles against the Tidings jar without bundling it. Download `tidings-forge-1.20.1-<version>.jar` from the [Tidings releases](https://github.com/tidingsmc/tidingsmc/releases) into `libs/`, and set `tidings_version` in `gradle.properties` to its version.
 
 ```sh
 ./gradlew build        # mod jar in build/libs/

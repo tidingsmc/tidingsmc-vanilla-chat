@@ -15,6 +15,15 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v5
+      - name: fetch Tidings jar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tidings_version=$(sed -n 's/^tidings_version=//p' gradle.properties)
+          minecraft_version=$(sed -n 's/^minecraft_version=//p' gradle.properties)
+          mkdir -p libs
+          gh release download "v$tidings_version" --repo tidingsmc/tidingsmc --dir libs \
+            --pattern "tidings-forge-$minecraft_version-$tidings_version.jar"
       - run: ./gradlew build
       - uses: actions/upload-artifact@v5
         with:
